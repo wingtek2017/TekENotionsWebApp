@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var MenuService = (function () {
+var MenuService = /** @class */ (function () {
     function MenuService() {
         this.isVertical = false;
         this.showingLeftSideMenu = false;
@@ -19,10 +19,10 @@ var MenuService = (function () {
     MenuService.prototype.toggleMenuOrientation = function () {
         this.isVertical = !this.isVertical;
     };
+    MenuService = __decorate([
+        core_1.Injectable()
+    ], MenuService);
     return MenuService;
 }());
-MenuService = __decorate([
-    core_1.Injectable()
-], MenuService);
 exports.MenuService = MenuService;
 //# sourceMappingURL=menu.service.js.map

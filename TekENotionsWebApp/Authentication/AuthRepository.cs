@@ -24,8 +24,7 @@ namespace TekENotionsWebApp.Authentication
             {
                 UserName = userModel.UserName
             };
-            var test = await _userManager.FindAsync(user.UserName, userModel.Password);
-
+           
             var result = await _userManager.CreateAsync(user, userModel.Password);
 
             return result;

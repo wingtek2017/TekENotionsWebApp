@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Needle = (function () {
+var Needle = /** @class */ (function () {
     function Needle() {
     }
     return Needle;

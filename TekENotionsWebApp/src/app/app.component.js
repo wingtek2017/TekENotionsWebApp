@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var framework_config_service_1 = require("./fw/services/framework-config.service");
 var menu_service_1 = require("./fw/services/menu.service");
 var app_menu_1 = require("./app.menu");
-var AppComponent = (function () {
+var AppComponent = /** @class */ (function () {
     function AppComponent(frameworkConfigService, menuService) {
         this.frameworkConfigService = frameworkConfigService;
         this.menuService = menuService;
@@ -30,15 +30,15 @@ var AppComponent = (function () {
         frameworkConfigService.configure(config);
         menuService.items = app_menu_1.initialMenuItems;
     }
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'ptc-app',
+            templateUrl: './app.component.html',
+            styleUrls: ['./app.component.css']
+        }),
+        __metadata("design:paramtypes", [framework_config_service_1.FrameworkConfigService, menu_service_1.MenuService])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'ptc-app',
-        templateUrl: './app.component.html',
-        styleUrls: ['./app.component.css']
-    }),
-    __metadata("design:paramtypes", [framework_config_service_1.FrameworkConfigService, menu_service_1.MenuService])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

@@ -15,7 +15,7 @@ var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
-var PatternService = (function () {
+var PatternService = /** @class */ (function () {
     function PatternService(http) {
         this.http = http;
         this.url = "/api/patternApi";
@@ -39,7 +39,7 @@ var PatternService = (function () {
     PatternService.prototype.handleErrors = function (error) {
         var errors = [];
         switch (error.status) {
-            case 400:
+            case 400:// Bad Request
                 var err = error.json();
                 if (err.message) {
                     errors.push(err.message);
@@ -48,10 +48,10 @@ var PatternService = (function () {
                     errors.push("An Unknown error occurred.");
                 }
                 break;
-            case 404:
+            case 404:// Not Found
                 errors.push("No Pattern Data Is Available.");
                 break;
-            case 500:
+            case 500:// Internal Error
                 errors.push(error.json().exceptionMessage);
                 break;
             default:
@@ -64,11 +64,11 @@ var PatternService = (function () {
         console.error('An error occurred', errors);
         return Observable_1.Observable.throw(errors);
     };
+    PatternService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], PatternService);
     return PatternService;
 }());
-PatternService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], PatternService);
 exports.PatternService = PatternService;
 //# sourceMappingURL=pattern.service.js.map

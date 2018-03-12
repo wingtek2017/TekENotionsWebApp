@@ -9,6 +9,7 @@ using TekENotionsWebApp.Models;
 
 namespace TekENotionsWebApp.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/patternApi")]
     public class PatternAPIController : ApiController
     {

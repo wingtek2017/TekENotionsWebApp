@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var pattern_service_1 = require("./pattern.service");
 var patternSearch_1 = require("./patternSearch");
 var needle_service_1 = require("../needle/needle.service");
-var PatternListComponent = (function () {
+var PatternListComponent = /** @class */ (function () {
     function PatternListComponent(patternService, needleService) {
         this.patternService = patternService;
         this.needleService = needleService;
@@ -55,15 +55,15 @@ var PatternListComponent = (function () {
             this.messages.push(msg);
         }
     };
+    PatternListComponent = __decorate([
+        core_1.Component({
+            templateUrl: "./pattern-list.component.html",
+            styleUrls: ["./pattern-list.component.css"]
+        }),
+        __metadata("design:paramtypes", [pattern_service_1.PatternService,
+            needle_service_1.NeedleService])
+    ], PatternListComponent);
     return PatternListComponent;
 }());
-PatternListComponent = __decorate([
-    core_1.Component({
-        templateUrl: "./pattern-list.component.html",
-        styleUrls: ["./pattern-list.component.css"]
-    }),
-    __metadata("design:paramtypes", [pattern_service_1.PatternService,
-        needle_service_1.NeedleService])
-], PatternListComponent);
 exports.PatternListComponent = PatternListComponent;
 //# sourceMappingURL=pattern-list.component.js.map

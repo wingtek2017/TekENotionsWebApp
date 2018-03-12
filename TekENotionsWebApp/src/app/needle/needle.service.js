@@ -15,7 +15,7 @@ var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
-var NeedleService = (function () {
+var NeedleService = /** @class */ (function () {
     function NeedleService(http) {
         this.http = http;
         this.url = "/api/needleApi";
@@ -34,7 +34,7 @@ var NeedleService = (function () {
     NeedleService.prototype.handleErrors = function (error) {
         var errors = [];
         switch (error.status) {
-            case 400:
+            case 400:// Bad Request
                 var err = error.json();
                 if (err.message) {
                     errors.push(err.message);
@@ -43,10 +43,10 @@ var NeedleService = (function () {
                     errors.push("An Unknown error occurred.");
                 }
                 break;
-            case 404:
+            case 404:// Not Found
                 errors.push("No Category Data Is Available.");
                 break;
-            case 500:
+            case 500:// Internal Error
                 errors.push(error.json().exceptionMessage);
                 break;
             default:
@@ -59,11 +59,11 @@ var NeedleService = (function () {
         console.error('An error occurred', errors);
         return Observable_1.Observable.throw(errors);
     };
+    NeedleService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], NeedleService);
     return NeedleService;
 }());
-NeedleService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], NeedleService);
 exports.NeedleService = NeedleService;
 //# sourceMappingURL=needle.service.js.map

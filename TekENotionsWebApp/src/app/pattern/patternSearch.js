@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var PatternSearch = (function () {
+var PatternSearch = /** @class */ (function () {
     function PatternSearch() {
     }
     return PatternSearch;

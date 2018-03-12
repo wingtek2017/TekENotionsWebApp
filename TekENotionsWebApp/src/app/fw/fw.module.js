@@ -15,31 +15,31 @@ var content_component_1 = require("./content/content.component");
 var title_bar_component_1 = require("./title-bar/title-bar.component");
 var top_bar_component_1 = require("./top-bar/top-bar.component");
 var status_bar_component_1 = require("./status-bar/status-bar.component");
-var FwModule = (function () {
+var FwModule = /** @class */ (function () {
     function FwModule() {
     }
+    FwModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                common_1.CommonModule
+            ],
+            declarations: [
+                framework_body_component_1.FrameworkBodyComponent,
+                content_component_1.ContentComponent,
+                title_bar_component_1.TitleBarComponent,
+                top_bar_component_1.TopBarComponent,
+                status_bar_component_1.StatusBarComponent
+            ],
+            providers: [
+                framework_config_service_1.FrameworkConfigService,
+                menu_service_1.MenuService
+            ],
+            exports: [
+                framework_body_component_1.FrameworkBodyComponent
+            ]
+        })
+    ], FwModule);
     return FwModule;
 }());
-FwModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            common_1.CommonModule
-        ],
-        declarations: [
-            framework_body_component_1.FrameworkBodyComponent,
-            content_component_1.ContentComponent,
-            title_bar_component_1.TitleBarComponent,
-            top_bar_component_1.TopBarComponent,
-            status_bar_component_1.StatusBarComponent
-        ],
-        providers: [
-            framework_config_service_1.FrameworkConfigService,
-            menu_service_1.MenuService
-        ],
-        exports: [
-            framework_body_component_1.FrameworkBodyComponent
-        ]
-    })
-], FwModule);
 exports.FwModule = FwModule;
 //# sourceMappingURL=fw.module.js.map

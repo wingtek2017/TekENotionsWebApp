@@ -10,20 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var TitleBarComponent = (function () {
+var TitleBarComponent = /** @class */ (function () {
     function TitleBarComponent() {
     }
     TitleBarComponent.prototype.ngOnInit = function () {
     };
+    TitleBarComponent = __decorate([
+        core_1.Component({
+            selector: 'fw-title-bar',
+            templateUrl: './title-bar.component.html',
+            styleUrls: ['./title-bar.component.css']
+        }),
+        __metadata("design:paramtypes", [])
+    ], TitleBarComponent);
     return TitleBarComponent;
 }());
-TitleBarComponent = __decorate([
-    core_1.Component({
-        selector: 'fw-title-bar',
-        templateUrl: './title-bar.component.html',
-        styleUrls: ['./title-bar.component.css']
-    }),
-    __metadata("design:paramtypes", [])
-], TitleBarComponent);
 exports.TitleBarComponent = TitleBarComponent;
 //# sourceMappingURL=title-bar.component.js.map

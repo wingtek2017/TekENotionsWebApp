@@ -11,21 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var menu_service_1 = require("../../services/menu.service");
-var MenuComponent = (function () {
+var MenuComponent = /** @class */ (function () {
     function MenuComponent(menuService) {
         this.menuService = menuService;
     }
     MenuComponent.prototype.ngOnInit = function () {
     };
+    MenuComponent = __decorate([
+        core_1.Component({
+            selector: 'fw-menu',
+            templateUrl: './menu.component.html',
+            styleUrls: ['./menu.component.css']
+        }),
+        __metadata("design:paramtypes", [menu_service_1.MenuService])
+    ], MenuComponent);
     return MenuComponent;
 }());
-MenuComponent = __decorate([
-    core_1.Component({
-        selector: 'fw-menu',
-        templateUrl: './menu.component.html',
-        styleUrls: ['./menu.component.css']
-    }),
-    __metadata("design:paramtypes", [menu_service_1.MenuService])
-], MenuComponent);
 exports.MenuComponent = MenuComponent;
 //# sourceMappingURL=menu.component.js.map

@@ -10,20 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var StatusBarComponent = (function () {
+var StatusBarComponent = /** @class */ (function () {
     function StatusBarComponent() {
     }
     StatusBarComponent.prototype.ngOnInit = function () {
     };
+    StatusBarComponent = __decorate([
+        core_1.Component({
+            selector: 'fw-status-bar',
+            templateUrl: './status-bar.component.html',
+            styleUrls: ['./status-bar.component.css']
+        }),
+        __metadata("design:paramtypes", [])
+    ], StatusBarComponent);
     return StatusBarComponent;
 }());
-StatusBarComponent = __decorate([
-    core_1.Component({
-        selector: 'fw-status-bar',
-        templateUrl: './status-bar.component.html',
-        styleUrls: ['./status-bar.component.css']
-    }),
-    __metadata("design:paramtypes", [])
-], StatusBarComponent);
 exports.StatusBarComponent = StatusBarComponent;
 //# sourceMappingURL=status-bar.component.js.map

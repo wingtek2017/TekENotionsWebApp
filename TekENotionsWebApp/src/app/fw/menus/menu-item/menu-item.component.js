@@ -10,24 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var MenuItemComponent = (function () {
+var MenuItemComponent = /** @class */ (function () {
     function MenuItemComponent() {
     }
     MenuItemComponent.prototype.ngOnInit = function () {
     };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], MenuItemComponent.prototype, "item", void 0);
+    MenuItemComponent = __decorate([
+        core_1.Component({
+            selector: 'fw-menu-item',
+            templateUrl: './menu-item.component.html',
+            styleUrls: ['./menu-item.component.css']
+        }),
+        __metadata("design:paramtypes", [])
+    ], MenuItemComponent);
     return MenuItemComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], MenuItemComponent.prototype, "item", void 0);
-MenuItemComponent = __decorate([
-    core_1.Component({
-        selector: 'fw-menu-item',
-        templateUrl: './menu-item.component.html',
-        styleUrls: ['./menu-item.component.css']
-    }),
-    __metadata("design:paramtypes", [])
-], MenuItemComponent);
 exports.MenuItemComponent = MenuItemComponent;
 //# sourceMappingURL=menu-item.component.js.map

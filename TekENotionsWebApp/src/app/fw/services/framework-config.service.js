@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var FrameworkConfigService = (function () {
+var FrameworkConfigService = /** @class */ (function () {
     function FrameworkConfigService() {
         this.showLanguageSelector = true;
         this.showUserControls = true;
@@ -18,10 +18,10 @@ var FrameworkConfigService = (function () {
     FrameworkConfigService.prototype.configure = function (settings) {
         Object.assign(this, settings);
     };
+    FrameworkConfigService = __decorate([
+        core_1.Injectable()
+    ], FrameworkConfigService);
     return FrameworkConfigService;
 }());
-FrameworkConfigService = __decorate([
-    core_1.Injectable()
-], FrameworkConfigService);
 exports.FrameworkConfigService = FrameworkConfigService;
 //# sourceMappingURL=framework-config.service.js.map

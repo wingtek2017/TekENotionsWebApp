@@ -26,10 +26,12 @@ namespace TekENotionsWebApp.Controllers
            
             if (userModel == null)
             {
-              
-                userModel.UserName = "cwingfield";
-                userModel.Password = "Cde3xsw2!";
-                userModel.ConfirmPassword = "Cde3xsw2!";
+                userModel = new UserModel
+                {
+                    UserName = "cwingfield",
+                    Password = "Cde3xsw2!",
+                    ConfirmPassword = "Cde3xsw2!"
+                };
             }
             if (!ModelState.IsValid)
             {

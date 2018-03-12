@@ -11,21 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var framework_config_service_1 = require("../services/framework-config.service");
-var TopBarComponent = (function () {
+var TopBarComponent = /** @class */ (function () {
     function TopBarComponent(frameworkConfigService) {
         this.frameworkConfigService = frameworkConfigService;
     }
     TopBarComponent.prototype.ngOnInit = function () {
     };
+    TopBarComponent = __decorate([
+        core_1.Component({
+            selector: 'fw-top-bar',
+            templateUrl: './top-bar.component.html',
+            styleUrls: ['./top-bar.component.css']
+        }),
+        __metadata("design:paramtypes", [framework_config_service_1.FrameworkConfigService])
+    ], TopBarComponent);
     return TopBarComponent;
 }());
-TopBarComponent = __decorate([
-    core_1.Component({
-        selector: 'fw-top-bar',
-        templateUrl: './top-bar.component.html',
-        styleUrls: ['./top-bar.component.css']
-    }),
-    __metadata("design:paramtypes", [framework_config_service_1.FrameworkConfigService])
-], TopBarComponent);
 exports.TopBarComponent = TopBarComponent;
 //# sourceMappingURL=top-bar.component.js.map

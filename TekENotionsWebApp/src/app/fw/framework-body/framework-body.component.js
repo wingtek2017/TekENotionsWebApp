@@ -10,20 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var FrameworkBodyComponent = (function () {
+var FrameworkBodyComponent = /** @class */ (function () {
     function FrameworkBodyComponent() {
     }
     FrameworkBodyComponent.prototype.ngOnInit = function () {
     };
+    FrameworkBodyComponent = __decorate([
+        core_1.Component({
+            selector: 'fw-framework-body',
+            templateUrl: './framework-body.component.html',
+            styleUrls: ['./framework-body.component.css']
+        }),
+        __metadata("design:paramtypes", [])
+    ], FrameworkBodyComponent);
     return FrameworkBodyComponent;
 }());
-FrameworkBodyComponent = __decorate([
-    core_1.Component({
-        selector: 'fw-framework-body',
-        templateUrl: './framework-body.component.html',
-        styleUrls: ['./framework-body.component.css']
-    }),
-    __metadata("design:paramtypes", [])
-], FrameworkBodyComponent);
 exports.FrameworkBodyComponent = FrameworkBodyComponent;
 //# sourceMappingURL=framework-body.component.js.map
