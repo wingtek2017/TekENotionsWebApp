@@ -1,0 +1,920 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TekENotionsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CircularNeedleSize">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="250" />
+          <Property Name="needleType" Type="varchar" MaxLength="50" />
+          <Property Name="showOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="needle_sizes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="metric" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="us" Type="varchar" MaxLength="50" />
+          <Property Name="hook" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="needle_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="type_name" Type="varchar" MaxLength="50" />
+          <Property Name="needle_size_id" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="length" Type="int" />
+          <Property Name="metric_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NeedleDescriptionLookup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ravelryDescription" Type="varchar" MaxLength="250" />
+          <Property Name="systemDescription" Type="varchar" MaxLength="250" />
+          <Property Name="ravelryId" Type="int" />
+        </EntityType>
+        <EntityType Name="pattern">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="1000" />
+          <Property Name="free" Type="bit" />
+          <Property Name="first_photo_id" Type="int" />
+          <Property Name="pattern_author_id" Type="int" />
+          <Property Name="designer_id" Type="int" />
+          <Property Name="permalink" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="pattern_author">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="favorites_count" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="1000" />
+          <Property Name="patterns_count" Type="int" />
+          <Property Name="permalink" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="pattern_needle_size">
+          <Key>
+            <PropertyRef Name="pattern_id" />
+            <PropertyRef Name="needle_size_id" />
+          </Key>
+          <Property Name="pattern_id" Type="int" Nullable="false" />
+          <Property Name="needle_size_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="photo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="caption_html" Type="varchar" MaxLength="1000" />
+          <Property Name="copyright_holder" Type="varchar" MaxLength="1000" />
+          <Property Name="caption" Type="varchar" MaxLength="1000" />
+          <Property Name="medium2_url" Type="varchar" MaxLength="1000" />
+          <Property Name="medium_url" Type="varchar" MaxLength="1000" />
+          <Property Name="small2_url" Type="varchar" MaxLength="1000" />
+          <Property Name="small_url" Type="varchar" MaxLength="1000" />
+          <Property Name="sort_order" Type="int" />
+          <Property Name="square_url" Type="varchar" MaxLength="1000" />
+          <Property Name="thumbnail_url" Type="varchar" MaxLength="1000" />
+          <Property Name="x_offset" Type="float" />
+          <Property Name="y_offset" Type="float" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tekENotionsNeedleSizes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="needleType" Type="varchar" MaxLength="50" />
+          <Property Name="showOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="UserModel">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="ConfirmPassword" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserNeedleInventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="nchar" MaxLength="10" />
+          <Property Name="needlelength" Type="varchar" MaxLength="50" />
+          <Property Name="needlesize" Type="varchar" MaxLength="50" />
+          <Property Name="needletype" Type="varchar" MaxLength="50" />
+          <Property Name="howmany" Type="int" />
+          <Property Name="howmanyinuse" Type="int" />
+          <Property Name="ravelryId" Type="int" />
+          <Property Name="ravelryName" Type="varchar" MaxLength="250" />
+          <Property Name="dateCreated" Type="datetime" />
+          <Property Name="dateModified" Type="datetime" />
+          <Property Name="deleted" Type="bit" />
+          <Property Name="userdescription" Type="varchar" MaxLength="250" />
+          <Property Name="systemName" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="UserSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Knitting" Type="bit" />
+          <Property Name="Crochet" Type="bit" />
+          <Property Name="UsePassword" Type="bit" />
+          <Property Name="Metric" Type="bit" />
+          <Property Name="US" Type="bit" />
+          <Property Name="MetricUS" Type="bit" />
+          <Property Name="dateCreated" Type="datetime" />
+          <Property Name="dateSettingsUpdated" Type="datetime" />
+          <Property Name="dateLastLogin" Type="datetime" />
+          <Property Name="dateInventoryUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="yarn">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="yarn_company_name" Type="varchar" MaxLength="500" />
+          <Property Name="rating_total" Type="int" />
+          <Property Name="max_gauge" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="first_photo_id" Type="int" />
+          <Property Name="permalink" Type="varchar" MaxLength="500" />
+          <Property Name="min_gauge" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="grams" Type="int" />
+          <Property Name="discontinued" Type="bit" />
+          <Property Name="gauge_divisor" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="texture" Type="varchar" MaxLength="500" />
+          <Property Name="name" Type="varchar" MaxLength="1000" />
+          <Property Name="rating_average" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="machine_washable" Type="bit" />
+          <Property Name="yarn_weight_id" Type="int" />
+          <Property Name="yardage" Type="int" />
+        </EntityType>
+        <EntityType Name="yarn_weight">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ply" Type="varchar" MaxLength="500" />
+          <Property Name="crochet_gauge" Type="varchar" MaxLength="500" />
+          <Property Name="wpi" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="1000" />
+          <Property Name="knit_gauge" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TekENotionsModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CircularNeedleSize" EntityType="Self.CircularNeedleSize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="needle_sizes" EntityType="Self.needle_sizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="needle_types" EntityType="Self.needle_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NeedleDescriptionLookup" EntityType="Self.NeedleDescriptionLookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pattern" EntityType="Self.pattern" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pattern_author" EntityType="Self.pattern_author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pattern_needle_size" EntityType="Self.pattern_needle_size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="photo" EntityType="Self.photo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tekENotionsNeedleSizes" EntityType="Self.tekENotionsNeedleSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserModel" EntityType="Self.UserModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserNeedleInventory" EntityType="Self.UserNeedleInventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSettings" EntityType="Self.UserSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yarn" EntityType="Self.yarn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yarn_weight" EntityType="Self.yarn_weight" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TekENotionsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TekENotionsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="TekENotionsModel.sysdiagram" />
+          <EntitySet Name="UserSettings" EntityType="TekENotionsModel.UserSetting" />
+          <EntitySet Name="needle_types" EntityType="TekENotionsModel.needle_types" />
+          <EntitySet Name="needle_sizes" EntityType="TekENotionsModel.needle_sizes" />
+          <EntitySet Name="patterns" EntityType="TekENotionsModel.pattern" />
+          <EntitySet Name="pattern_author" EntityType="TekENotionsModel.pattern_author" />
+          <EntitySet Name="photos" EntityType="TekENotionsModel.photo" />
+          <EntitySet Name="yarn_weight" EntityType="TekENotionsModel.yarn_weight" />
+          <EntitySet Name="yarns" EntityType="TekENotionsModel.yarn" />
+          <EntitySet Name="pattern_needle_size" EntityType="TekENotionsModel.pattern_needle_size" />
+          <EntitySet Name="tekENotionsNeedleSizes" EntityType="TekENotionsModel.tekENotionsNeedleSize" />
+          <EntitySet Name="CircularNeedleSizes" EntityType="TekENotionsModel.CircularNeedleSize" />
+          <EntitySet Name="UserNeedleInventories" EntityType="TekENotionsModel.UserNeedleInventory" />
+          <EntitySet Name="AspNetRoles" EntityType="TekENotionsModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="TekENotionsModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="TekENotionsModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUserRoles" EntityType="TekENotionsModel.AspNetUserRole" />
+          <EntitySet Name="AspNetUsers" EntityType="TekENotionsModel.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="TekENotionsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="TekENotionsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="TekENotionsModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <EntitySet Name="UserModels" EntityType="TekENotionsModel.UserModel" />
+          <EntitySet Name="NeedleDescriptionLookups" EntityType="TekENotionsModel.NeedleDescriptionLookup" />
+        </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Knitting" Type="Boolean" />
+          <Property Name="Crochet" Type="Boolean" />
+          <Property Name="UsePassword" Type="Boolean" />
+          <Property Name="Metric" Type="Boolean" />
+          <Property Name="US" Type="Boolean" />
+          <Property Name="MetricUS" Type="Boolean" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="dateSettingsUpdated" Type="DateTime" Precision="3" />
+          <Property Name="dateLastLogin" Type="DateTime" Precision="3" />
+          <Property Name="dateInventoryUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="needle_types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="needle_size_id" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="length" Type="Int32" />
+          <Property Name="metric_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="needle_sizes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="metric" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="us" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hook" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pattern">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="free" Type="Boolean" />
+          <Property Name="first_photo_id" Type="Int32" />
+          <Property Name="pattern_author_id" Type="Int32" />
+          <Property Name="designer_id" Type="Int32" />
+          <Property Name="permalink" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="pattern_author">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="favorites_count" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="patterns_count" Type="Int32" />
+          <Property Name="permalink" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="photo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="caption_html" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="copyright_holder" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="caption" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="medium2_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="medium_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="small2_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="small_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="sort_order" Type="Int32" />
+          <Property Name="square_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="thumbnail_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="x_offset" Type="Double" />
+          <Property Name="y_offset" Type="Double" />
+        </EntityType>
+        <EntityType Name="yarn_weight">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ply" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="crochet_gauge" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="wpi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="knit_gauge" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="yarn">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="yarn_company_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="rating_total" Type="Int32" />
+          <Property Name="max_gauge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="first_photo_id" Type="Int32" />
+          <Property Name="permalink" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="min_gauge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="grams" Type="Int32" />
+          <Property Name="discontinued" Type="Boolean" />
+          <Property Name="gauge_divisor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="texture" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="rating_average" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="machine_washable" Type="Boolean" />
+          <Property Name="yarn_weight_id" Type="Int32" />
+          <Property Name="yardage" Type="Int32" />
+        </EntityType>
+        <EntityType Name="pattern_needle_size">
+          <Key>
+            <PropertyRef Name="pattern_id" />
+            <PropertyRef Name="needle_size_id" />
+          </Key>
+          <Property Name="pattern_id" Type="Int32" Nullable="false" />
+          <Property Name="needle_size_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tekENotionsNeedleSize">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="needleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="showOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CircularNeedleSize">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="needleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="showOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserNeedleInventory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="needlelength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="needlesize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="needletype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="howmany" Type="Int32" />
+          <Property Name="howmanyinuse" Type="Int32" />
+          <Property Name="ravelryId" Type="Int32" />
+          <Property Name="ravelryName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+          <Property Name="dateModified" Type="DateTime" Precision="3" />
+          <Property Name="deleted" Type="Boolean" />
+          <Property Name="userdescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="systemName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="TekENotionsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="TekENotionsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="TekENotionsModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUserRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="TekENotionsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="TekENotionsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetUserRoles" Relationship="TekENotionsModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserRole" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="TekENotionsModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TekENotionsModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="TekENotionsModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TekENotionsModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Type="TekENotionsModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TekENotionsModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserModel">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NeedleDescriptionLookup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ravelryDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="systemDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ravelryId" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TekENotionsModelStoreContainer" CdmEntityContainer="TekENotionsEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TekENotionsModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSettings">
+            <EntityTypeMapping TypeName="TekENotionsModel.UserSetting">
+              <MappingFragment StoreEntitySet="UserSettings">
+                <ScalarProperty Name="dateInventoryUpdated" ColumnName="dateInventoryUpdated" />
+                <ScalarProperty Name="dateLastLogin" ColumnName="dateLastLogin" />
+                <ScalarProperty Name="dateSettingsUpdated" ColumnName="dateSettingsUpdated" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="MetricUS" ColumnName="MetricUS" />
+                <ScalarProperty Name="US" ColumnName="US" />
+                <ScalarProperty Name="Metric" ColumnName="Metric" />
+                <ScalarProperty Name="UsePassword" ColumnName="UsePassword" />
+                <ScalarProperty Name="Crochet" ColumnName="Crochet" />
+                <ScalarProperty Name="Knitting" ColumnName="Knitting" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="needle_types">
+            <EntityTypeMapping TypeName="TekENotionsModel.needle_types">
+              <MappingFragment StoreEntitySet="needle_types">
+                <ScalarProperty Name="metric_name" ColumnName="metric_name" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="needle_size_id" ColumnName="needle_size_id" />
+                <ScalarProperty Name="type_name" ColumnName="type_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="needle_sizes">
+            <EntityTypeMapping TypeName="TekENotionsModel.needle_sizes">
+              <MappingFragment StoreEntitySet="needle_sizes">
+                <ScalarProperty Name="hook" ColumnName="hook" />
+                <ScalarProperty Name="us" ColumnName="us" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="metric" ColumnName="metric" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="patterns">
+            <EntityTypeMapping TypeName="TekENotionsModel.pattern">
+              <MappingFragment StoreEntitySet="pattern">
+                <ScalarProperty Name="permalink" ColumnName="permalink" />
+                <ScalarProperty Name="designer_id" ColumnName="designer_id" />
+                <ScalarProperty Name="pattern_author_id" ColumnName="pattern_author_id" />
+                <ScalarProperty Name="first_photo_id" ColumnName="first_photo_id" />
+                <ScalarProperty Name="free" ColumnName="free" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pattern_author">
+            <EntityTypeMapping TypeName="TekENotionsModel.pattern_author">
+              <MappingFragment StoreEntitySet="pattern_author">
+                <ScalarProperty Name="permalink" ColumnName="permalink" />
+                <ScalarProperty Name="patterns_count" ColumnName="patterns_count" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="favorites_count" ColumnName="favorites_count" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="photos">
+            <EntityTypeMapping TypeName="TekENotionsModel.photo">
+              <MappingFragment StoreEntitySet="photo">
+                <ScalarProperty Name="y_offset" ColumnName="y_offset" />
+                <ScalarProperty Name="x_offset" ColumnName="x_offset" />
+                <ScalarProperty Name="thumbnail_url" ColumnName="thumbnail_url" />
+                <ScalarProperty Name="square_url" ColumnName="square_url" />
+                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+                <ScalarProperty Name="small_url" ColumnName="small_url" />
+                <ScalarProperty Name="small2_url" ColumnName="small2_url" />
+                <ScalarProperty Name="medium_url" ColumnName="medium_url" />
+                <ScalarProperty Name="medium2_url" ColumnName="medium2_url" />
+                <ScalarProperty Name="caption" ColumnName="caption" />
+                <ScalarProperty Name="copyright_holder" ColumnName="copyright_holder" />
+                <ScalarProperty Name="caption_html" ColumnName="caption_html" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yarn_weight">
+            <EntityTypeMapping TypeName="TekENotionsModel.yarn_weight">
+              <MappingFragment StoreEntitySet="yarn_weight">
+                <ScalarProperty Name="knit_gauge" ColumnName="knit_gauge" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="wpi" ColumnName="wpi" />
+                <ScalarProperty Name="crochet_gauge" ColumnName="crochet_gauge" />
+                <ScalarProperty Name="ply" ColumnName="ply" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yarns">
+            <EntityTypeMapping TypeName="TekENotionsModel.yarn">
+              <MappingFragment StoreEntitySet="yarn">
+                <ScalarProperty Name="yardage" ColumnName="yardage" />
+                <ScalarProperty Name="yarn_weight_id" ColumnName="yarn_weight_id" />
+                <ScalarProperty Name="machine_washable" ColumnName="machine_washable" />
+                <ScalarProperty Name="rating_average" ColumnName="rating_average" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="texture" ColumnName="texture" />
+                <ScalarProperty Name="gauge_divisor" ColumnName="gauge_divisor" />
+                <ScalarProperty Name="discontinued" ColumnName="discontinued" />
+                <ScalarProperty Name="grams" ColumnName="grams" />
+                <ScalarProperty Name="min_gauge" ColumnName="min_gauge" />
+                <ScalarProperty Name="permalink" ColumnName="permalink" />
+                <ScalarProperty Name="first_photo_id" ColumnName="first_photo_id" />
+                <ScalarProperty Name="max_gauge" ColumnName="max_gauge" />
+                <ScalarProperty Name="rating_total" ColumnName="rating_total" />
+                <ScalarProperty Name="yarn_company_name" ColumnName="yarn_company_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pattern_needle_size">
+            <EntityTypeMapping TypeName="TekENotionsModel.pattern_needle_size">
+              <MappingFragment StoreEntitySet="pattern_needle_size">
+                <ScalarProperty Name="needle_size_id" ColumnName="needle_size_id" />
+                <ScalarProperty Name="pattern_id" ColumnName="pattern_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tekENotionsNeedleSizes">
+            <EntityTypeMapping TypeName="TekENotionsModel.tekENotionsNeedleSize">
+              <MappingFragment StoreEntitySet="tekENotionsNeedleSizes">
+                <ScalarProperty Name="showOrder" ColumnName="showOrder" />
+                <ScalarProperty Name="needleType" ColumnName="needleType" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CircularNeedleSizes">
+            <EntityTypeMapping TypeName="TekENotionsModel.CircularNeedleSize">
+              <MappingFragment StoreEntitySet="CircularNeedleSize">
+                <ScalarProperty Name="showOrder" ColumnName="showOrder" />
+                <ScalarProperty Name="needleType" ColumnName="needleType" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserNeedleInventories">
+            <EntityTypeMapping TypeName="TekENotionsModel.UserNeedleInventory">
+              <MappingFragment StoreEntitySet="UserNeedleInventory">
+                <ScalarProperty Name="systemName" ColumnName="systemName" />
+                <ScalarProperty Name="userdescription" ColumnName="userdescription" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="dateModified" ColumnName="dateModified" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="ravelryName" ColumnName="ravelryName" />
+                <ScalarProperty Name="ravelryId" ColumnName="ravelryId" />
+                <ScalarProperty Name="howmanyinuse" ColumnName="howmanyinuse" />
+                <ScalarProperty Name="howmany" ColumnName="howmany" />
+                <ScalarProperty Name="needletype" ColumnName="needletype" />
+                <ScalarProperty Name="needlesize" ColumnName="needlesize" />
+                <ScalarProperty Name="needlelength" ColumnName="needlelength" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="TekENotionsModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="TekENotionsModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="TekENotionsModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="TekENotionsModel.AspNetUserRole">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="TekENotionsModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserModels">
+            <EntityTypeMapping TypeName="TekENotionsModel.UserModel">
+              <MappingFragment StoreEntitySet="UserModel">
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NeedleDescriptionLookups">
+            <EntityTypeMapping TypeName="TekENotionsModel.NeedleDescriptionLookup">
+              <MappingFragment StoreEntitySet="NeedleDescriptionLookup">
+                <ScalarProperty Name="ravelryId" ColumnName="ravelryId" />
+                <ScalarProperty Name="systemDescription" ColumnName="systemDescription" />
+                <ScalarProperty Name="ravelryDescription" ColumnName="ravelryDescription" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,86 @@
+﻿
+<h2>Pattern List</h2>
+
+
+<div class="row" *ngIf="patterns && patterns.length">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">
+                    Search for Patterns...
+                </h1>
+            </div>
+            <div class="panel-body">
+               <div class="form-group">
+                    <label for="searchNeedleId">Search Needle ID</label>
+                    <select id="searchNeedleId"
+                            name="searchNeedleId"
+                            [(ngModel)]="searchEntity.needleSizeId"
+                            class="form-control">
+                        <option *ngFor="let needle of searchNeedles"
+                                value="{{needle.id}}">
+                            {{needle.description}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchPatternName">Pattern Name</label>
+                    <input type="text"
+                           id="searchPatternName"
+                           name="searchPatternName"
+                           [(ngModel)]="searchEntity.patternName"
+                           class="form-control" />
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button formnovalidate="formnovalidate"
+                        class="btn btn-sm btn-primary"
+                        (click)="search()">
+                    <i class="glyphicon glyphicon-search"></i>
+                    &nbsp;Search
+                </button>
+                <button formnovalidate="formnovalidate"
+                        class="btn btn-sm btn-primary"
+                        (click)="resetSearch()">
+                    <i class="glyphicon glyphicon-share-alt"></i>
+                    &nbsp;Reset
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ** END: Search Area ** -->
+<div class="row" *ngIf="patterns && patterns.length">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <td>Pattern ID</td>
+                        <td>Name</td>
+                        <td>Free</td>
+                        <td>Permalink</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pattern of patterns">
+                        <td>{{pattern.id}}</td>
+                        <td>{{pattern.name }}</td>
+                        <td>{{pattern.free}}</td>
+                        <td >{{pattern.permalink }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="messages && messages.length">
+    <div class="col-xs-12">
+        <div class="alert alert-warning">
+            <ul>
+                <li *ngFor="let msg of messages">{{msg}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
