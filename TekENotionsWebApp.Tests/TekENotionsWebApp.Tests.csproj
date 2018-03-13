@@ -96,6 +96,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="Content\loading-bar.css" />
+    <Content Include="Content\loading-bar.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -916,6 +918,8 @@
     <Content Include="Scripts\jquery-migrate-3.0.0.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\loading-bar.js" />
+    <Content Include="Scripts\loading-bar.min.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".bin\node.cmd" />
@@ -939,9 +943,9 @@
     <None Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TekENotionsWebApp\TekENotionsWebApp.csproj">
+    <ProjectReference Include="..\TekENotionsWebApp\TekENotionsWebApp.Web.csproj">
       <Project>{63291EF3-52A1-4A05-BFEC-E94B0309279E}</Project>
-      <Name>TekENotionsWebApp</Name>
+      <Name>TekENotionsWebApp.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

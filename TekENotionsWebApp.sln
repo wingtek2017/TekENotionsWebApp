@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TekENotionsWebApp", "TekENotionsWebApp\TekENotionsWebApp.csproj", "{63291EF3-52A1-4A05-BFEC-E94B0309279E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TekENotionsWebApp.Web", "TekENotionsWebApp\TekENotionsWebApp.Web.csproj", "{63291EF3-52A1-4A05-BFEC-E94B0309279E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TekENotionsWebApp.Tests", "TekENotionsWebApp.Tests\TekENotionsWebApp.Tests.csproj", "{BA7E3B72-3465-43B3-835A-5BE384986BD6}"
 EndProject
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DDF2A62-39DE-4BE1-BB21-CA082685AF4D}
 	EndGlobalSection
 EndGlobal

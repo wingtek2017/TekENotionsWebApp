@@ -364,6 +364,8 @@
     <Content Include="Content\Images\TekENotions.png" />
     <Content Include="Content\Images\video-poster.jpg" />
     <Content Include="Content\Images\wahlin_logo.png" />
+    <Content Include="Content\loading-bar.css" />
+    <Content Include="Content\loading-bar.min.css" />
     <Content Include="Content\new-age.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -604,6 +606,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\loading-bar.js" />
+    <Content Include="Scripts\loading-bar.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -612,6 +616,10 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="src\app\app.js" />
+    <Content Include="src\app\views\home.html" />
+    <Content Include="src\app\views\login.html" />
+    <Content Include="src\app\views\signup.html" />
     <Content Include="Views\Home\Inspiration.cshtml" />
     <Content Include="Content\TradeGothicLTStd-Bold.woff" />
     <Content Include="Content\TradeGothicLTStd.woff" />
@@ -1509,7 +1517,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Classes\ViewModel\" />
-    <Folder Include="src\app\personalNeedles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
