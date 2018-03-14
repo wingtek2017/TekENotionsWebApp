@@ -617,6 +617,12 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="src\app\app.js" />
+    <Content Include="src\app\controllers\homeController.js" />
+    <Content Include="src\app\services\authService.js" />
+    <Content Include="src\app\controllers\loginController.js" />
+    <Content Include="src\app\controllers\signupController.js" />
+    <Content Include="src\app\controllers\indexController.js" />
+    <Content Include="src\app\services\authInterceptorService.js" />
     <Content Include="src\app\views\home.html" />
     <Content Include="src\app\views\login.html" />
     <Content Include="src\app\views\signup.html" />
